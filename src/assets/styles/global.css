@@ -1,0 +1,46 @@
+:root {
+    font-size: 60%;
+
+    --color-text-base: #d5d5cc;
+
+    --color-background: #1e1e1e;
+    --color-form: #333333;
+    
+    --color-text-input: #1e1326;
+    --color-text-title: #ccccc2;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-primary-light: #1dad3a;
+    
+    --color-button-text: #FFFFFF;
+    --color-secundary: #681aa1;
+    --color-secundary-dark: #59168a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-background);
+}
+
+#root {
+    /* tudo vai estar alinhado ao centro da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body,
+button {
+    font: 500 1.6rem Poppins;
+    color: var(--color-text-base);
+}
+
+input, textarea{ 
+    font: 500 1.6rem Poppins;
+    color: var(--color-text-input);
+}
