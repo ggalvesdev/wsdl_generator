@@ -173,7 +173,7 @@ function Home() {
 
     const element = document.createElement('a') as HTMLAnchorElement;
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resultWSDL));
-    element.setAttribute('download', "generated_wsdl_from_json.wsdl");
+    element.setAttribute('download', "wsdl_generated_from_json.wsdl");
 
     element.style.display = 'none';
 
