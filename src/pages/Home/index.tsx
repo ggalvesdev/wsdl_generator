@@ -224,7 +224,6 @@ function Home() {
                   setMessagePort(e.target.value);
                 }}
               />
-
               <Input
                 name="messageOperation"
                 label="Message Operation"
@@ -233,7 +232,6 @@ function Home() {
                   setMessageOperation(e.target.value);
                 }}
               />
-
               <Input
                 name="messageBinding"
                 label="Message Binding"
@@ -241,8 +239,7 @@ function Home() {
                 onChange={(e) => {
                   setMessageBinding(e.target.value);
                 }}
-              />
-
+              /> 
               <Textarea
                 name="request"
                 label="Request JSON"
@@ -251,7 +248,6 @@ function Home() {
                   setMessageRequest(e.target.value);
                 }}
               />
-
               <Textarea
                 name="response"
                 label="Response JSON"
