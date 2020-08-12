@@ -167,8 +167,8 @@ function Home() {
 
     buttonDowload.disabled = false;
   }
-  
-  function handleDownloadWSDL(e: FormEvent){
+
+  function handleDownloadWSDL(e: FormEvent) {
     e.preventDefault();
     alert("Not Implemented yet!! :)");
   }
@@ -275,6 +275,16 @@ function Home() {
             Download WSDL
           </button>
         </form>
+      </div>
+      <div id="footer">
+        Created by{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/ggalvesdev"
+        >
+          Gabriel Gonçalves Alves
+        </a> 
       </div>
     </div>
   );
