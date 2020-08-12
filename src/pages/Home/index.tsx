@@ -72,19 +72,19 @@ function Home() {
       '<?xml version="1.0" encoding="utf-8"?> <wsdl:definitions targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions">   <wsdl:documentation>    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl"/>   </wsdl:documentation>   <wsdl:types>    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">            &&XSD_INPUT&&           &&XSD_OUTPUT&&      <xsd:element name="MT_&&MESSAGE_TYPE&&">        <xsd:complexType>           <xsd:sequence>            <xsd:element name="&&MESSAGE_TYPE&&" type="tns:&&MESSAGE_TYPE&&" minOccurs="0" maxOccurs="&&MESSAGE_TYPE_REQ_MAXOCCURS&&"/>           </xsd:sequence>         </xsd:complexType>      </xsd:element>      <xsd:element name="MT_&&MESSAGE_TYPE&&Response">        <xsd:complexType>           <xsd:sequence>            <xsd:element name="&&MESSAGE_TYPE&&Response" type="tns:&&MESSAGE_TYPE&&Response" minOccurs="0" maxOccurs="&&MESSAGE_TYPE_RESP_MAXOCCURS&&"/>          </xsd:sequence>         </xsd:complexType>      </xsd:element>    </xsd:schema>   </wsdl:types>   <wsdl:message name="MT_&&MESSAGE_TYPE&&">     <wsdl:part name="parameters" element="tns:MT_&&MESSAGE_TYPE&&"/>  </wsdl:message>   <wsdl:message name="MT_&&MESSAGE_TYPE&&Response">     <wsdl:part name="parameter" element="tns:MT_&&MESSAGE_TYPE&&Response"/>   </wsdl:message>   <wsdl:portType name="&&MESSAGE_PORT&&">     <wsdl:operation name="&&MESSAGE_OPERATION&&">       <wsdl:input message="tns:MT_&&MESSAGE_TYPE&&"/>       <wsdl:output message="tns:MT_&&MESSAGE_TYPE&&Response"/>    </wsdl:operation>   </wsdl:portType>  <wsdl:binding name="&&MESSAGE_BINDING&&" type="tns:&&MESSAGE_PORT&&">     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>     <wsdl:operation name="&&MESSAGE_OPERATION&&">       <soap:operation soapAction="urn:sap-com:document:sap:rfc:functions:&&MESSAGE_PORT&&:&&MESSAGE_OPERATION&&Request" style="document"/>      <wsdl:input>        <soap:body use="literal"/>      </wsdl:input>       <wsdl:output>         <soap:body use="literal"/>      </wsdl:output>    </wsdl:operation>   </wsdl:binding>   <wsdl:binding name="&&MESSAGE_BINDING&&_soap12" type="tns:&&MESSAGE_PORT&&">    <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>    <wsdl:operation name="&&MESSAGE_OPERATION&&">       <wsoap12:operation soapAction="urn:sap-com:document:sap:rfc:functions:&&MESSAGE_PORT&&:&&MESSAGE_OPERATION&&Request" style="document"/>       <wsdl:input>        <wsoap12:body use="literal"/>       </wsdl:input>       <wsdl:output>         <wsoap12:body use="literal"/>       </wsdl:output>    </wsdl:operation>   </wsdl:binding>   <wsdl:service name="&&MESSAGE_BINDING&&">     <wsdl:port name="&&MESSAGE_BINDING&&" binding="tns:&&MESSAGE_BINDING&&">      <soap:address location="http://dummy.com:80/dummy"/>    </wsdl:port>    <wsdl:port name="&&MESSAGE_BINDING&&_soap12" binding="tns:&&MESSAGE_BINDING&&_soap12">      <wsoap12:address location="http://dummy.com:80/dummy"/>     </wsdl:port>  </wsdl:service> </wsdl:definitions>';
 
     const sMessageType = messageType; //&&MESSAGE_REQ&&
-    var sMessagePort = messagePort; //&&MESSAGE_PORT&&
-    var sMessageOperation = messageOperation; //&&MESSAGE_OPERATION&&
-    var sMessageBinding = messageBinding; //&&MESSAGE_BINDING&&
-    var sRequestMessage = messageRequest;
-    var sResponseMessage = messageResponse;
+    const sMessagePort = messagePort; //&&MESSAGE_PORT&&
+    const sMessageOperation = messageOperation; //&&MESSAGE_OPERATION&&
+    const sMessageBinding = messageBinding; //&&MESSAGE_BINDING&&
+    const sRequestMessage = messageRequest;
+    const sResponseMessage = messageResponse;
 
     //Tratar exceções
-    var oJsonRequest = JSON.parse(sRequestMessage);
-    var oJsonResponse = JSON.parse(sResponseMessage);
+    const oJsonRequest = JSON.parse(sRequestMessage);
+    const oJsonResponse = JSON.parse(sResponseMessage);
 
-    var sXSDInput = decodeToXML(oJsonRequest, sMessageType, true); //&&XSD_INPUT&&
+    const sXSDInput = decodeToXML(oJsonRequest, sMessageType, true); //&&XSD_INPUT&&
 
-    var sXSDOutput = decodeToXML(
+    const sXSDOutput = decodeToXML(
       oJsonResponse,
       sMessageType + "Response",
       true
@@ -132,8 +132,8 @@ function Home() {
   }
 
   function prettyXML(sourceXml: string) {
-    var xmlDoc = new DOMParser().parseFromString(sourceXml, "application/xml");
-    var xsltDoc = new DOMParser().parseFromString(
+    const xmlDoc = new DOMParser().parseFromString(sourceXml, "application/xml");
+    const xsltDoc = new DOMParser().parseFromString(
       [
         '<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform">',
         '  <xsl:strip-space elements="*"/>',
@@ -149,10 +149,10 @@ function Home() {
       "application/xml"
     );
 
-    var xsltProcessor = new XSLTProcessor();
+    const xsltProcessor = new XSLTProcessor();
     xsltProcessor.importStylesheet(xsltDoc);
-    var resultDoc = xsltProcessor.transformToDocument(xmlDoc);
-    var resultXml = new XMLSerializer().serializeToString(resultDoc);
+    const resultDoc = xsltProcessor.transformToDocument(xmlDoc);
+    const resultXml = new XMLSerializer().serializeToString(resultDoc);
     return resultXml;
   }
 
@@ -170,14 +170,25 @@ function Home() {
 
   function handleDownloadWSDL(e: FormEvent) {
     e.preventDefault();
-    alert("Not Implemented yet!! :)");
+
+    const element = document.createElement('a') as HTMLAnchorElement;
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resultWSDL));
+    element.setAttribute('download', "generated_wsdl_from_json.wsdl");
+
+    element.style.display = 'none';
+
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
   }
 
   function initForm() {
-    setMessageType("sampleMessage");
-    setMessagePort("WS_Port_Sample");
+    setMessageType("SampleMessage");
+    setMessagePort("WSPort");
     setMessageOperation("Query");
-    setMessageBinding("sampleBinding");
+    setMessageBinding("SampleBinding");
     setMessageRequest('{ "document": "123" }');
     setMessageResponse(
       '{ "returnMessage" : "Success!", "returnCode" : "200" }'
