@@ -2,6 +2,26 @@
     position: relative; 
 }
 
+
+.textarea-block textarea::-webkit-scrollbar-track
+{
+    border-radius: 15px;
+}
+
+.textarea-block textarea::-webkit-scrollbar
+{
+    width: 8px;
+    -webkit-appearance: none;
+}
+
+.textarea-block textarea::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: var(--color-secundary);
+}
+
+
+
 .textarea-block {
     margin-top: 1.4rem;
 }
@@ -15,7 +35,7 @@
     height: 16rem;
     min-height: 8rem;
     margin-top: 0.8rem;
-    border-radius: 0.8rem;
+    border-radius: 0.6rem;
     background: var(--color-input-background);
     border: 1px solid var(--color-line-in-white);
     outline: 0;
