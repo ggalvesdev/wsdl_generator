@@ -1,7 +1,7 @@
 #page-home {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-flow: row wrap;
+  justify-content: flex-start; 
   width: 80vw;
   margin-top: 10px;
   background-color: var(--color-form);
@@ -9,12 +9,14 @@
   border-radius: 0.9rem;
 }
 #page-form {
-  flex-grow: 0.1;
+  flex-grow: 1;
+  padding: 0 2.4rem;
 }
 
 #page-result {
-  flex-grow: 9;
+  flex-grow: 12; 
   padding-right: 20px;
+  padding: 0 2.4rem;
 }
 
 #footer {
@@ -34,7 +36,6 @@
   color: var(--color-secundary);
 }
 
-
 #fulltextarea {
   height: 86rem;
 }
@@ -45,7 +46,7 @@
   margin-bottom: 2.4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   padding-bottom: 1.6rem;
   border-bottom: 1px solid var(--color-line-in-white);
@@ -53,7 +54,6 @@
 
 #page-form main fieldset {
   border: 0;
-  padding: 0 2.4rem;
 }
 
 #page-form main footer button {

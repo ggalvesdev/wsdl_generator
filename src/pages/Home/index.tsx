@@ -2,7 +2,7 @@ import React, { FormEvent, useState, useEffect } from "react";
 
 import "./styles.css";
 import Input from "../../components/Input";
-import Textarea from "../../components/Textarea";
+import Textarea from "../../components/Textarea"; 
 
 function Home() {
   const [messageType, setMessageType] = useState("");
@@ -132,7 +132,10 @@ function Home() {
   }
 
   function prettyXML(sourceXml: string) {
-    const xmlDoc = new DOMParser().parseFromString(sourceXml, "application/xml");
+    const xmlDoc = new DOMParser().parseFromString(
+      sourceXml,
+      "application/xml"
+    );
     const xsltDoc = new DOMParser().parseFromString(
       [
         '<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform">',
@@ -171,11 +174,14 @@ function Home() {
   function handleDownloadWSDL(e: FormEvent) {
     e.preventDefault();
 
-    const element = document.createElement('a') as HTMLAnchorElement;
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resultWSDL));
-    element.setAttribute('download', "wsdl_generated_from_json.wsdl");
+    const element = document.createElement("a") as HTMLAnchorElement;
+    element.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," + encodeURIComponent(resultWSDL)
+    );
+    element.setAttribute("download", "wsdl_generated_from_json.wsdl");
 
-    element.style.display = 'none';
+    element.style.display = "none";
 
     document.body.appendChild(element);
 
@@ -239,7 +245,7 @@ function Home() {
                 onChange={(e) => {
                   setMessageBinding(e.target.value);
                 }}
-              /> 
+              />
               <Textarea
                 name="request"
                 label="Request JSON"
@@ -265,11 +271,12 @@ function Home() {
           </form>
         </main>
       </div>
-      <div id="page-result">
+      <div id="page-result"> 
         <Textarea
           name="result"
           label=""
           value={resultWSDL}
+          isXML={true}
           onChange={(e) => {
             setResultWSDL(e.target.value);
           }}
@@ -291,7 +298,7 @@ function Home() {
           href="https://github.com/ggalvesdev"
         >
           Gabriel Gonçalves Alves
-        </a> 
+        </a>
       </div>
     </div>
   );
