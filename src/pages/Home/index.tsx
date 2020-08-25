@@ -211,7 +211,7 @@ function Home() {
         <main>
           <form onSubmit={handleGenerateWSDL}>
             <fieldset>
-              <legend>Webservice Parameters</legend>
+              <legend>SAP Webservice Parameters</legend>
 
               <Input
                 name="messageType"
